@@ -6,6 +6,12 @@ import { getTodos } from "./lib/api/todos"
 import { Todo } from "./interfaces/index"
 import { VFC } from "react"
 
+//chakra全体用！！！
+import { ChakraProvider } from "@chakra-ui/react"
+import { Container } from "@chakra-ui/react"
+//chakra全体用！！！
+
+
 const App: VFC = () => {
   const [todos, setTodos] = useState<Todo[]>([])
 
@@ -27,11 +33,13 @@ const App: VFC = () => {
   }, [])
 
   return (
-    <>
-      <h1>Todo App</h1>
-      <TodoForm todos={todos} setTodos={setTodos} />
-      <TodoList todos={todos} setTodos={setTodos} />
-    </>
+    <ChakraProvider>
+      <Container maxW="container.md">
+        <h1>Todo App</h1>
+        <TodoForm todos={todos} setTodos={setTodos} />
+        <TodoList todos={todos} setTodos={setTodos} />
+      </Container>
+    </ChakraProvider>
   )
 }
 

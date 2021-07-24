@@ -2,6 +2,21 @@ import React, { useState } from "react"
 import { createTodo } from "../lib/api/todos"
 import { Todo } from "../interfaces/index"
 
+// button用！！！
+import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Flex, Stack, HStack, VStack } from "@chakra-ui/react"
+import { memo, ReactNode, VFC } from "react";
+// button用！！！
+
+// input用！！！
+import { Input } from "@chakra-ui/react"
+// input用！！！
+
+//textarea用！！！
+import { Textarea } from "@chakra-ui/react"
+//textarea用！！！
+
+
 type TodoFormProps = {
   todos: Todo[]
   setTodos: Function
@@ -39,8 +54,9 @@ export const TodoForm: React.FC<TodoFormProps> = ({ todos, setTodos }) => {
     <form onSubmit={handleCreateTodo}>
       <ul>
         <li>
-          <input
+          <Input
             type="text"
+            mt={[2]}
             placeholder="タイトルを入力"
             value={title}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,17 +65,35 @@ export const TodoForm: React.FC<TodoFormProps> = ({ todos, setTodos }) => {
           />
         </li>
         <li>
-          <textarea
+          <Textarea
             placeholder="詳細のテキストが入る"
+            mt={[2]}
+            mb={['2']}
             value={content}
             onChange= {(e: React.ChangeEvent<HTMLTextAreaElement>) =>{
               setContent(e.target.value)
             }}
           >
-          </textarea>
+          </Textarea>
         </li>
         <li>
-          <input type="submit" value="送信" disabled={!title} />
+          <Stack>
+            <Button
+              bg="teal.400"
+              color="white"
+              size="md"
+              align="center"
+              m={['auto']}
+              height="48px"
+              width="200px"
+              variant="solid"
+              _hover={{opacity: 0.8}}
+              disabled={!title}
+              type="submit"
+            >
+              送信
+            </Button>
+          </Stack>
         </li>
       </ul>
     </form>
