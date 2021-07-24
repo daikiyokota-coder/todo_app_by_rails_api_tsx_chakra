@@ -25,7 +25,8 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo, setTodos }) => {
 
   return (
     <tr>
-      <td>{todo.title}</td>
+      <td>タイトル: {todo.title}</td>
+      <td>詳細: {todo.content}</td>
       <td>
         <button onClick={() => handleDeleteTodo(todo.id || 0)}>Delete</button>
       </td>

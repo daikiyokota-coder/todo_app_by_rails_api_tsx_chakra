@@ -9,12 +9,14 @@ type TodoFormProps = {
 
 export const TodoForm: React.FC<TodoFormProps> = ({ todos, setTodos }) => {
   const [title, setTitle] = useState<string>("")
+  const [content, setContent] = useState<string>("")
 
   const handleCreateTodo = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     const data: Todo = {
-      title: title
+      title: title,
+      content: content
     }
 
     try {
@@ -30,6 +32,7 @@ export const TodoForm: React.FC<TodoFormProps> = ({ todos, setTodos }) => {
     }
 
     setTitle("")
+    setContent("")
   }
 
   return (
@@ -46,7 +49,14 @@ export const TodoForm: React.FC<TodoFormProps> = ({ todos, setTodos }) => {
           />
         </li>
         <li>
-          <textarea placeholder="詳細のテキストが入る"></textarea>
+          <textarea
+            placeholder="詳細のテキストが入る"
+            value={content}
+            onChange= {(e: React.ChangeEvent<HTMLTextAreaElement>) =>{
+              setContent(e.target.value)
+            }}
+          >
+          </textarea>
         </li>
         <li>
           <input type="submit" value="送信" disabled={!title} />
