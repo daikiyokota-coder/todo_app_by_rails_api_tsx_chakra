@@ -1,6 +1,11 @@
 import React from "react"
 import { deleteTodo } from "../lib/api/todos"
 import { Todo } from "../interfaces/index"
+import {Tr, Td} from "@chakra-ui/react"
+
+
+import { Button } from "@chakra-ui/react";
+import {DeleteButton} from "./atoms/DeleteButton";
 
 interface TodoItemProps {
   todo: Todo
@@ -24,12 +29,14 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo, setTodos }) => {
   }
 
   return (
-    <tr>
-      <td>タイトル: {todo.title}</td>
-      <td>詳細: {todo.content}</td>
-      <td>
-        <button onClick={() => handleDeleteTodo(todo.id || 0)}>Delete</button>
-      </td>
-    </tr>
+    <Tr>
+      <Td >{todo.title}</Td>
+      <Td>{todo.content}</Td>
+      <Td>
+        <DeleteButton onClick={() => handleDeleteTodo(todo.id || 0)}>
+          削除
+        </DeleteButton>
+      </Td>
+    </Tr>
   )
 }
