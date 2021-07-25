@@ -2,20 +2,12 @@ import React, { useState } from "react"
 import { createTodo } from "../lib/api/todos"
 import { Todo } from "../interfaces/index"
 import { PrimaryButton } from "./atoms/PrimaryButton"
-
+import { BaseTextarea } from "./atoms/BaseTextarea"
+import { BaseInput } from "./atoms/BaseInput"
 
 // button用！！！
 import { Flex, Stack, HStack, VStack } from "@chakra-ui/react"
 // button用！！！
-
-// input用！！！
-import { Input } from "@chakra-ui/react"
-// input用！！！
-
-//textarea用！！！
-import { Textarea } from "@chakra-ui/react"
-//textarea用！！！
-
 
 type TodoFormProps = {
   todos: Todo[]
@@ -25,6 +17,14 @@ type TodoFormProps = {
 export const TodoForm: React.FC<TodoFormProps> = ({ todos, setTodos }) => {
   const [title, setTitle] = useState<string>("")
   const [content, setContent] = useState<string>("")
+
+  const onChangeTextarea = (e: React.ChangeEvent<HTMLTextAreaElement>): void =>{
+    setContent(e.target.value)
+  }
+
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value)
+  }
 
   const handleCreateTodo = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -54,27 +54,18 @@ export const TodoForm: React.FC<TodoFormProps> = ({ todos, setTodos }) => {
     <form onSubmit={handleCreateTodo}>
       <ul>
         <li>
-          <Input
-            type="text"
-            mt={[2]}
+          <BaseInput
             placeholder="タイトルを入力"
             value={title}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setTitle(e.target.value)
-            }}
+            onChange={onChangeInput}
           />
         </li>
         <li>
-          <Textarea
-            placeholder="詳細のテキストが入る"
-            mt={[2]}
-            mb={['2']}
+          <BaseTextarea
+            placeholder="詳細を入力"
             value={content}
-            onChange= {(e: React.ChangeEvent<HTMLTextAreaElement>) =>{
-              setContent(e.target.value)
-            }}
-          >
-          </Textarea>
+            onChangeTextarea={onChangeTextarea}
+          />
         </li>
         <li>
           <Stack>
