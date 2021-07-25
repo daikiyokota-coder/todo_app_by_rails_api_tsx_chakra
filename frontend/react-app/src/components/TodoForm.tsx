@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 import { createTodo } from "../lib/api/todos"
 import { Todo } from "../interfaces/index"
+import { PrimaryButton } from "./atoms/PrimaryButton"
+
 
 // button用！！！
-import { Button, ButtonGroup } from "@chakra-ui/react";
 import { Flex, Stack, HStack, VStack } from "@chakra-ui/react"
-import { memo, ReactNode, VFC } from "react";
 // button用！！！
 
 // input用！！！
@@ -78,21 +78,7 @@ export const TodoForm: React.FC<TodoFormProps> = ({ todos, setTodos }) => {
         </li>
         <li>
           <Stack>
-            <Button
-              bg="teal.400"
-              color="white"
-              size="md"
-              align="center"
-              m={['auto']}
-              height="48px"
-              width="200px"
-              variant="solid"
-              _hover={{opacity: 0.8}}
-              disabled={!title}
-              type="submit"
-            >
-              送信
-            </Button>
+            <PrimaryButton disabled={!title}>送信</PrimaryButton>
           </Stack>
         </li>
       </ul>
