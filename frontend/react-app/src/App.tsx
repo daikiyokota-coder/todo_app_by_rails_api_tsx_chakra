@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { TodoList } from "./components/TodoList"
-import { TodoForm } from "./components/TodoForm"
+import { TodoForm } from "./components/organisms/TodoForm"
 
 import { getTodos } from "./lib/api/todos"
 import { Todo } from "./interfaces/index"

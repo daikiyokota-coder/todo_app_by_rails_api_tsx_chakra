@@ -1,9 +1,9 @@
 import React, { useState } from "react"
-import { createTodo } from "../lib/api/todos"
-import { Todo } from "../interfaces/index"
-import { PrimaryButton } from "./atoms/PrimaryButton"
-import { BaseTextarea } from "./atoms/BaseTextarea"
-import { BaseInput } from "./atoms/BaseInput"
+import { createTodo } from "../../lib/api/todos"
+import { Todo } from "../../interfaces/index"
+import { PrimaryButton } from "../atoms/PrimaryButton"
+import { BaseTextarea } from "../atoms/BaseTextarea"
+import { BaseInput } from "../atoms/BaseInput"
 
 // button用！！！
 import { Flex, Stack, HStack, VStack } from "@chakra-ui/react"
